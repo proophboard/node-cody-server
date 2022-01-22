@@ -1,0 +1,32 @@
+{
+  "name": "@proophboard/cody-types",
+  "version": "0.0.1",
+  "description": "Common types for Cody packages",
+  "types": "./src/index.d.ts",
+  "scripts": {
+    "test": "tsc -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/proophboard/node-cody-server.git",
+    "directory": "packages/cody-types"
+  },
+  "dependencies": {
+    "immutable": "^4.0.0"
+  },
+  "keywords": [
+    "Cody"
+  ],
+  "author": "alex-miertsch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/proophboard/node-cody-server/issues"
+  },
+  "homepage": "https://github.com/proophboard/node-cody-server#readme",
+  "engines": {
+    "node": ">=14"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
