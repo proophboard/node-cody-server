@@ -8,3 +8,5 @@ jest.config.js
 jest.transform.js
 scripts
 examples/
+packages/*/lib
+packages/cody-types/src/index.ts

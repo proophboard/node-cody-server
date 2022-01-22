@@ -1,3 +1,4 @@
+import {List, Record} from "immutable";
 import {
     GraphPoint,
     Node,
@@ -8,8 +9,7 @@ import {
     NodeTag,
     NodeType, RawNodeRecordProps
 } from "./index";
-import {List, Record} from "immutable";
-import {GraphPointRecord} from "./GraphPointRecord";
+import GraphPointRecord from "./GraphPointRecord";
 
 const defaultNodeRecordProps: NodeRecordProps = {
     id: '',
@@ -27,8 +27,7 @@ const defaultNodeRecordProps: NodeRecordProps = {
     metadata: null,
 };
 
-export const makeNodeRecord = (node: RawNodeRecordProps): NodeRecord => {
-    return new NodeRecord({
+export const makeNodeRecord = (node: RawNodeRecordProps): NodeRecord => new NodeRecord({
         id: node.id,
         name: node.name,
         type: node.type,
@@ -43,7 +42,6 @@ export const makeNodeRecord = (node: RawNodeRecordProps): NodeRecord => {
         geometry: new GraphPointRecord(node.geometry),
         metadata: node.metadata,
     });
-};
 
 export class NodeRecord extends Record(defaultNodeRecordProps) implements Node {
     public getId(): NodeId {
