@@ -1,5 +1,23 @@
 import {List, Map} from "immutable";
 
+export type ReplyCallback<T = any> = (reply: T) => Promise<CodyResponse>;
+
+export interface CodyResponse {
+    cody: string | string[];
+    details?: string | string[];
+    type?: CodyResponseType;
+    reply?: ReplyCallback;
+}
+
+export enum CodyResponseType {
+    Info = 'Info',
+    Error = 'Error',
+    Warning = 'Warning',
+    Question = 'Question',
+    SyncRequired = 'SyncRequired',
+    Empty= 'Empty',
+}
+
 export type NodeMap = Map<string, Node>;
 export type NodeId = string;
 export type NodeName = string;
