@@ -3,14 +3,18 @@ NodeJS Cody Server
 
 ## Monorepo Maintenance
 
+[Lerna](https://github.com/lerna/lerna) is used to run commands for all packages, e.g. `lerna run dev:next --stream --parallel`
+
+[Changesets](https://github.com/changesets/changesets) is used to manage package versions and publishing to NPM
+
 ### Create Changeset
 
-`yarn changeset`
+`changeset`
 
 ### Distribute Version
 
-`lerna publish`
+`changeset version`
 
 ### Publish on NPM
 
-`yarn release`
+`changeset publish` or `yarn release`
