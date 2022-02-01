@@ -1,6 +1,6 @@
 {
   "name": "@proophboard/cody-server",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Cody Server",
   "scripts": {
     "test": "tsc -p ."
@@ -11,7 +11,7 @@
     "directory": "packages/cody-server"
   },
   "dependencies": {
-    "@proophboard/cody-types": "^0.0.2",
+    "@proophboard/cody-types": "^0.1.0",
     "immutable": "^4.0.0"
   },
   "keywords": [

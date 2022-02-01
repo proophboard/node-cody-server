@@ -1,6 +1,6 @@
 {
   "name": "@proophboard/cody-types",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Common types for Cody packages",
   "scripts": {
     "test": "tsc -p ."
