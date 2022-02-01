@@ -21,6 +21,7 @@ export enum CodyResponseType {
 export type NodeMap = Map<string, Node>;
 export type NodeId = string;
 export type NodeName = string;
+export type NodeDescription = string;
 export type NodeLink = string;
 export type NodeTag = string;
 export enum NodeType {
@@ -52,6 +53,7 @@ export interface GraphPoint {
 export interface Node {
   getId: () => NodeId;
   getName: () => NodeName;
+  getDescription: () => NodeDescription;
   getType: () => NodeType;
   getLink: () => NodeLink;
   getTags: () => List<NodeTag>;
@@ -71,6 +73,7 @@ export interface Node {
 export interface RawNodeRecordProps {
   id: NodeId;
   name: NodeName;
+  description: NodeDescription;
   type: NodeType;
   link: NodeLink | null;
   tags: NodeTag[];
@@ -87,6 +90,7 @@ export interface RawNodeRecordProps {
 export interface NodeRecordProps {
   id: NodeId;
   name: NodeName;
+  description: NodeDescription;
   type: NodeType;
   link: NodeLink;
   tags: List<NodeTag>;

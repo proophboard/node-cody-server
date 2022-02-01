@@ -1,0 +1,32 @@
+{
+  "name": "@proophboard/cody-utils",
+  "version": "0.0.1",
+  "description": "Cody Utilities",
+  "scripts": {
+    "test": "tsc -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/proophboard/node-cody-server.git",
+    "directory": "packages/cody-utils"
+  },
+  "dependencies": {
+    "immutable": "^4.0.0",
+    "@proophboard/cody-types": "^0.0.0-7"
+  },
+  "keywords": [
+    "Cody"
+  ],
+  "author": "alex-miertsch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/proophboard/node-cody-server/issues"
+  },
+  "homepage": "https://github.com/proophboard/node-cody-server#readme",
+  "engines": {
+    "node": ">=14"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
