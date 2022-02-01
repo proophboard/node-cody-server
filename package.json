@@ -7,6 +7,10 @@
   "workspaces": [
     "packages/*"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:proophboard/node-cody-server.git"
+  },
   "scripts": {
     "dev": "lerna run dev:next --stream --parallel",
     "bootstrap": "lerna bootstrap",
