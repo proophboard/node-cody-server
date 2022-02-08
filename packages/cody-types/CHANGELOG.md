@@ -1,5 +1,11 @@
 # @proophboard/cody-types
 
+## 0.3.0
+
+### Minor Changes
+
+- Added CodyHook type
+
 ## 0.2.1
 
 ### Patch Changes

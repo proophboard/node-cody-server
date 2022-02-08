@@ -45,6 +45,8 @@ export enum NodeType {
   layer = 'layer',
 }
 
+export type CodyHook<T = any> = (node: Node, context: T) => Promise<CodyResponse>;
+
 export interface GraphPoint {
   x: number;
   y: number;
