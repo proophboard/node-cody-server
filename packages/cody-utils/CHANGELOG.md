@@ -1,5 +1,16 @@
 # @proophboard/cody-utils
 
+## 0.1.0
+
+### Minor Changes
+
+- Added Cody utils
+
+### Patch Changes
+
+- Updated dependencies
+  - @proophboard/cody-types@0.2.1
+
 ## 0.0.4
 
 ### Patch Changes

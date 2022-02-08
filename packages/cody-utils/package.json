@@ -1,9 +1,11 @@
 {
   "name": "@proophboard/cody-utils",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Cody Utilities",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "test": "tsc -p ."
+    "build": "tsc -p ."
   },
   "repository": {
     "type": "git",
@@ -11,7 +13,8 @@
     "directory": "packages/cody-utils"
   },
   "dependencies": {
-    "@proophboard/cody-types": "^0.2.0",
+    "@proophboard/cody-types": "^0.2.1",
+    "camel-case": "^4.1.2",
     "immutable": "^4.0.0"
   },
   "keywords": [
