@@ -1,12 +1,8 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NodeRecord = exports.makeNodeRecord = void 0;
 const immutable_1 = require("immutable");
 const index_1 = require("./index");
-const GraphPointRecord_1 = __importDefault(require("./GraphPointRecord"));
 const defaultNodeRecordProps = {
     id: '',
     name: '',
@@ -36,7 +32,7 @@ const makeNodeRecord = (node) => new NodeRecord({
     childrenList: (0, immutable_1.List)(node.childrenList.map(exports.makeNodeRecord)),
     sourcesList: (0, immutable_1.List)(node.sourcesList.map(exports.makeNodeRecord)),
     targetsList: (0, immutable_1.List)(node.targetsList.map(exports.makeNodeRecord)),
-    geometry: new GraphPointRecord_1.default(node.geometry),
+    geometry: new index_1.GraphPointRecord(node.geometry),
     metadata: node.metadata,
 });
 exports.makeNodeRecord = makeNodeRecord;

@@ -1,10 +1,10 @@
 {
   "name": "@proophboard/cody-types",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Common types for Cody packages",
   "types": "lib/index.d.ts",
   "scripts": {
-    "test": "tsc -p ."
+    "build": "tsc -p ."
   },
   "repository": {
     "type": "git",

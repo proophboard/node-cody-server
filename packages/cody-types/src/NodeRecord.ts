@@ -1,6 +1,6 @@
 import { List, Record } from 'immutable';
 import {
-  GraphPoint,
+  GraphPoint, GraphPointRecord,
   Node,
   NodeDescription,
   NodeId,
@@ -11,7 +11,6 @@ import {
   NodeType,
   RawNodeRecordProps
 } from './index';
-import GraphPointRecord from './GraphPointRecord';
 
 const defaultNodeRecordProps: NodeRecordProps = {
   id: '',

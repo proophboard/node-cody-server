@@ -1,4 +1,4 @@
-import { List, Map } from 'immutable';
+import { List, Map, Record } from 'immutable';
 export declare type ReplyCallback<T = any> = (reply: T) => Promise<CodyResponse>;
 export interface CodyResponse {
     cody: string | string[];
@@ -43,6 +43,12 @@ export declare enum NodeType {
 export interface GraphPoint {
     x: number;
     y: number;
+}
+declare const GraphPointRecord_base: Record.Factory<{
+    x: number;
+    y: number;
+}>;
+export declare class GraphPointRecord extends GraphPointRecord_base implements GraphPoint {
 }
 export interface Node {
     getId: () => NodeId;
@@ -95,3 +101,5 @@ export interface NodeRecordProps {
     geometry: GraphPoint;
     metadata: string | null;
 }
+export { makeNodeRecord } from "./NodeRecord";
+export { NodeRecord } from "./NodeRecord";

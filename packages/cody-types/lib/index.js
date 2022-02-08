@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.NodeType = exports.CodyResponseType = void 0;
+exports.NodeRecord = exports.makeNodeRecord = exports.GraphPointRecord = exports.NodeType = exports.CodyResponseType = void 0;
+const immutable_1 = require("immutable");
 var CodyResponseType;
 (function (CodyResponseType) {
     CodyResponseType["Info"] = "Info";
@@ -31,3 +32,10 @@ var NodeType;
     NodeType["image"] = "image";
     NodeType["layer"] = "layer";
 })(NodeType = exports.NodeType || (exports.NodeType = {}));
+class GraphPointRecord extends (0, immutable_1.Record)({ x: 0, y: 0 }) {
+}
+exports.GraphPointRecord = GraphPointRecord;
+var NodeRecord_1 = require("./NodeRecord");
+Object.defineProperty(exports, "makeNodeRecord", { enumerable: true, get: function () { return NodeRecord_1.makeNodeRecord; } });
+var NodeRecord_2 = require("./NodeRecord");
+Object.defineProperty(exports, "NodeRecord", { enumerable: true, get: function () { return NodeRecord_2.NodeRecord; } });

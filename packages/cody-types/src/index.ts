@@ -1,4 +1,4 @@
-import { List, Map } from 'immutable';
+import {List, Map, Record} from 'immutable';
 
 export type ReplyCallback<T = any> = (reply: T) => Promise<CodyResponse>;
 
@@ -49,6 +49,8 @@ export interface GraphPoint {
   x: number;
   y: number;
 }
+
+export class GraphPointRecord extends Record({ x: 0, y: 0 }) implements GraphPoint {}
 
 export interface Node {
   getId: () => NodeId;
@@ -103,3 +105,6 @@ export interface NodeRecordProps {
   geometry: GraphPoint;
   metadata: string | null;
 }
+
+export {makeNodeRecord} from "./NodeRecord";
+export {NodeRecord} from "./NodeRecord";
