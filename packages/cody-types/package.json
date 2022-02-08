@@ -2,6 +2,7 @@
   "name": "@proophboard/cody-types",
   "version": "0.1.0",
   "description": "Common types for Cody packages",
+  "types": "lib/index.d.ts",
   "scripts": {
     "test": "tsc -p ."
   },

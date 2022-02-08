@@ -1,0 +1,33 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.NodeType = exports.CodyResponseType = void 0;
+var CodyResponseType;
+(function (CodyResponseType) {
+    CodyResponseType["Info"] = "Info";
+    CodyResponseType["Error"] = "Error";
+    CodyResponseType["Warning"] = "Warning";
+    CodyResponseType["Question"] = "Question";
+    CodyResponseType["SyncRequired"] = "SyncRequired";
+    CodyResponseType["Empty"] = "Empty";
+})(CodyResponseType = exports.CodyResponseType || (exports.CodyResponseType = {}));
+var NodeType;
+(function (NodeType) {
+    NodeType["event"] = "event";
+    NodeType["command"] = "command";
+    NodeType["role"] = "role";
+    NodeType["aggregate"] = "aggregate";
+    NodeType["document"] = "document";
+    NodeType["policy"] = "policy";
+    NodeType["hotSpot"] = "hotSpot";
+    NodeType["externalSystem"] = "externalSystem";
+    NodeType["ui"] = "ui";
+    NodeType["feature"] = "feature";
+    NodeType["boundedContext"] = "boundedContext";
+    NodeType["freeText"] = "freeText";
+    NodeType["textCard"] = "textCard";
+    NodeType["edge"] = "edge";
+    NodeType["misc"] = "misc";
+    NodeType["icon"] = "icon";
+    NodeType["image"] = "image";
+    NodeType["layer"] = "layer";
+})(NodeType = exports.NodeType || (exports.NodeType = {}));
