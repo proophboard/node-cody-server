@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     context: {
         /*
          * The context object is passed to each hook as second argument

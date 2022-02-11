@@ -16,7 +16,7 @@ const elementEdited_1 = require("./http/elementEdited");
 const bodyParser = require('body-parser');
 const syncStatus = { syncRequired: false };
 const codyServer = (codyConfig) => {
-    const app = (0, express_1.default)();
+    const app = express_1.default();
     const options = {
         allowedHeaders: [
             'Origin',
@@ -32,8 +32,8 @@ const codyServer = (codyConfig) => {
         preflightContinue: false,
     };
     // GZIP compress resources served
-    app.use((0, compression_1.default)());
-    app.use((0, cors_1.default)(options));
+    app.use(compression_1.default());
+    app.use(cors_1.default(options));
     app.use(bodyParser.json());
     // Force redirect to HTTPS if the protocol was HTTP
     // if (!process.env.LOCAL) {
@@ -55,12 +55,12 @@ const codyServer = (codyConfig) => {
     app.post(`/messages/${Events.IioSaidHello}`, (req, res) => {
         console.log(Events.IioSaidHello);
         syncStatus.syncRequired = true;
-        res.send((0, greeting_1.greeting)(req.body.user));
+        res.send(greeting_1.greeting(req.body.user));
     });
     app.post(`/messages/${Events.UserReplied}`, (req, res) => {
         console.log(Events.UserReplied, req.body);
-        (0, question_1.handleReply)(req.body.reply).then(codyRes => {
-            res.send((0, question_1.checkQuestion)(codyRes));
+        question_1.handleReply(req.body.reply).then(codyRes => {
+            res.send(question_1.checkQuestion(codyRes));
         }, reason => {
             res.send({
                 cody: "Look's like something went wrong!",
@@ -72,7 +72,7 @@ const codyServer = (codyConfig) => {
     app.post(`/messages/${Events.ElementEdited}`, (req, res) => {
         console.log(Events.ElementEdited, req.body);
         if (syncStatus.syncRequired) {
-            codyConfig.context.syncedNodes = (0, immutable_1.Map)();
+            codyConfig.context.syncedNodes = immutable_1.Map();
             res.send({
                 cody: 'I need to sync all elements first.',
                 details: "Lean back for a moment. I'll let you know when I'm done.",
@@ -80,12 +80,12 @@ const codyServer = (codyConfig) => {
             });
             return;
         }
-        (0, elementEdited_1.handleElementEdited)((0, cody_types_1.makeNodeRecord)(req.body.node), codyConfig).then(codyRes => {
-            res.send((0, question_1.checkQuestion)(codyRes));
+        elementEdited_1.handleElementEdited(cody_types_1.makeNodeRecord(req.body.node), codyConfig).then(codyRes => {
+            res.send(question_1.checkQuestion(codyRes));
         }, reason => {
             console.log(reason);
             res.send({
-                cody: `Uh, sorry. Cannot handle element ${(0, cody_types_1.makeNodeRecord)(req.body.node).getName()}!`,
+                cody: `Uh, sorry. Cannot handle element ${cody_types_1.makeNodeRecord(req.body.node).getName()}!`,
                 details: reason.toString(),
                 type: cody_types_1.CodyResponseType.Error
             });
@@ -180,7 +180,7 @@ const codyServer = (codyConfig) => {
     });
     app.post(`/messages/${Events.ConfirmTest}`, (req, res) => {
         console.log(Events.ConfirmTest);
-        res.send((0, question_1.checkQuestion)((0, question_1.test)()));
+        res.send(question_1.checkQuestion(question_1.test()));
     });
     return server;
 };

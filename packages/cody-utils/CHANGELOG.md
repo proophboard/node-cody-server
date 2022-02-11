@@ -1,5 +1,13 @@
 # @proophboard/cody-utils
 
+## 0.1.2
+
+### Patch Changes
+
+- Added keywords to package.json and install instructions to README
+- Updated dependencies
+  - @proophboard/cody-types@0.3.2
+
 ## 0.1.1
 
 ### Patch Changes

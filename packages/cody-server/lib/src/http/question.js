@@ -3,14 +3,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.test = exports.handleReply = exports.checkQuestion = void 0;
 const cody_types_1 = require("@proophboard/cody-types");
 let CurrentQuestion;
-const checkQuestion = (res) => {
+exports.checkQuestion = (res) => {
     if (res.type === cody_types_1.CodyResponseType.Question && res.reply) {
         CurrentQuestion = res.reply;
     }
     return res;
 };
-exports.checkQuestion = checkQuestion;
-const handleReply = async (reply) => {
+exports.handleReply = async (reply) => {
     if (CurrentQuestion) {
         const res = await CurrentQuestion(reply);
         CurrentQuestion = undefined;
@@ -22,8 +21,7 @@ const handleReply = async (reply) => {
         type: cody_types_1.CodyResponseType.Warning
     };
 };
-exports.handleReply = handleReply;
-const test = () => {
+exports.test = () => {
     return {
         cody: "Do you like bots?",
         details: "Answer with: Yes|no",
@@ -38,4 +36,3 @@ const test = () => {
         }
     };
 };
-exports.test = test;

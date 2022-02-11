@@ -1,5 +1,16 @@
 # @proophboard/cody-server
 
+## 0.2.0
+
+### Minor Changes
+
+- Switched to run server with ts-node and require a codyconfig.ts
+
+### Patch Changes
+
+- Updated dependencies
+  - @proophboard/cody-types@0.3.2
+
 ## 0.1.1
 
 ### Patch Changes

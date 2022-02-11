@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.handleElementEdited = void 0;
 const cody_types_1 = require("@proophboard/cody-types");
-const handleElementEdited = async (node, codyConfig) => {
+exports.handleElementEdited = async (node, codyConfig) => {
     const hookName = 'on' + node.getType().charAt(0).toUpperCase() + node.getType().slice(1);
     if (codyConfig.hooks.hasOwnProperty(hookName)) {
         const hook = codyConfig.hooks[hookName];
@@ -16,4 +16,3 @@ const handleElementEdited = async (node, codyConfig) => {
         };
     }
 };
-exports.handleElementEdited = handleElementEdited;

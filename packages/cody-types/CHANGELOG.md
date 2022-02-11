@@ -1,5 +1,11 @@
 # @proophboard/cody-types
 
+## 0.3.2
+
+### Patch Changes
+
+- Added keywords to package.json and install instructions to README
+
 ## 0.3.1
 
 ### Patch Changes

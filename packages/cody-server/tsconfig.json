@@ -3,14 +3,14 @@
     "target": "ES2019",
     "module": "commonjs",
     "strict": true,
-    "rootDir": "src",
+    "rootDir": ".",
     "declaration": true,
     "outDir": "lib",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "skipLibCheck": false,
-    "incremental": true
+    "incremental": true,
   },
-  "exclude": ["*/__tests__/**/*", "./lib/**/*"]
+  "exclude": ["*/__tests__/**/*", "./lib/**/*", "node_modules"]
 }

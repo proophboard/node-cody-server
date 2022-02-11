@@ -1,6 +1,6 @@
 {
   "name": "@proophboard/cody-types",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Common types for Cody packages",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -16,7 +16,9 @@
     "immutable": "^4.0.0"
   },
   "keywords": [
-    "Cody"
+    "Cody",
+    "lowcode",
+    "proophboard"
   ],
   "author": "alex-miertsch",
   "license": "MIT",

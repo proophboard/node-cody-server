@@ -1,6 +1,6 @@
 {
   "name": "@proophboard/cody-utils",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Cody Utilities",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -13,12 +13,14 @@
     "directory": "packages/cody-utils"
   },
   "dependencies": {
-    "@proophboard/cody-types": "^0.3.0",
+    "@proophboard/cody-types": "^0.3.2",
     "camel-case": "^4.1.2",
     "immutable": "^4.0.0"
   },
   "keywords": [
-    "Cody"
+    "Cody",
+    "lowcode",
+    "proophboard"
   ],
   "author": "alex-miertsch",
   "license": "MIT",

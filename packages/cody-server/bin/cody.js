@@ -8,13 +8,13 @@ const { execSync } = require('child_process');
 // this is the directory the users project is in
 const projectDIR = process.cwd();
 const coreDirectory = path.join(__dirname, '../');
-const libDirectory = path.join(__dirname, '../lib');
+const srcDirectory = path.join(__dirname, '../src');
 
 cli
     .command('start')
     .description('Start the Cody server.')
     .action(() => {
-        execSync(`node ${libDirectory}/index.js`, {
+        execSync(`npx ts-node ${srcDirectory}/index.ts`, {
             cwd: projectDIR,
             stdio: 'inherit',
         });
@@ -24,15 +24,15 @@ cli
     .command('init')
     .description('Initialize cody config')
     .action(() => {
-        if(fs.existsSync(projectDIR + '/codyconfig.js')) {
-            console.warn('A codyconfig.js file exists already in the project root. Init is not needed!');
+        if(fs.existsSync(projectDIR + '/codyconfig.ts')) {
+            console.warn('A codyconfig.ts file exists already in the project root. Init is not needed!');
             process.exit(0);
             return;
         }
 
-        fs.cpSync(coreDirectory + '/codyconfig.js', projectDIR + '/codyconfig.js');
+        fs.cpSync(coreDirectory + '/codyconfig.ts', projectDIR + '/codyconfig.ts');
 
-        console.log('Created a fresh codyconfig.js in project root. Configure your hooks in that file to be invoked by Cody.')
+        console.log('Created a fresh codyconfig.ts in project root. Configure your hooks in that file to be invoked by Cody.')
         console.log('Learn more about Cody: https://wiki.prooph-board.com/cody/Cody-Server.html')
 
         process.exit(0);
