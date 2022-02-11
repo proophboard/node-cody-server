@@ -1,5 +1,11 @@
 # @proophboard/cody-server
 
+## 0.3.2
+
+### Patch Changes
+
+- Require a sync by default
+
 ## 0.3.1
 
 ### Patch Changes
