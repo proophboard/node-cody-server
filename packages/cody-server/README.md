@@ -36,7 +36,7 @@ and restart the server:
 
 ```bash
 npm i --save-dev nodemon
-nodemon --watch .codyhooks/** --watch codyconfig.ts --ext ts,json --exec 'npx proophboard start'
+nodemon --watch .codyhooks/**/* --watch codyconfig.ts --ext ts,json --exec 'npx proophboard start'
 ```
 
 ## What's next?
