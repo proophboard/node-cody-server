@@ -1,5 +1,11 @@
 # @proophboard/cody-server
 
+## 0.3.3
+
+### Patch Changes
+
+- Update server lib
+
 ## 0.3.2
 
 ### Patch Changes

@@ -14,7 +14,7 @@ const question_1 = require("./http/question");
 const elementEdited_1 = require("./http/elementEdited");
 // tslint:disable-next-line:no-var-requires
 const bodyParser = require('body-parser');
-const syncStatus = { syncRequired: false };
+const syncStatus = { syncRequired: true };
 const codyServer = (codyConfig) => {
     const app = express_1.default();
     const options = {

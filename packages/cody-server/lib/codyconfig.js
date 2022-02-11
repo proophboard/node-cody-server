@@ -1,13 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = {
+const immutable_1 = require("immutable");
+module.exports = {
     context: {
         /*
          * The context object is passed to each hook as second argument
          * use it to pass configuration to your hooks like a src directory, credentials, ...
          */
         // This Cody server implements the optional Sync flow and stores all synced nodes in this context property
-        syncedNodes: {}
+        syncedNodes: immutable_1.Map({})
     },
     hooks: {
     /**

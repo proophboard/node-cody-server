@@ -8,7 +8,7 @@ const server_1 = __importDefault(require("./server"));
 // tslint:disable-next-line:no-var-requires
 const codyConfig = require(process.cwd() + '/codyconfig');
 if (!codyConfig) {
-    console.error("No codyconfig.js found in the current working directory: " + process.cwd());
+    console.error("No codyconfig.ts found in the current working directory: " + process.cwd());
     process.exit(1);
 }
 const server = server_1.default(codyConfig);
