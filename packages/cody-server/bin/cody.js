@@ -30,7 +30,7 @@ cli
             return;
         }
 
-        fs.cp(coreDirectory + '/codyconfig.js', projectDIR + '/codyconfig.js');
+        fs.cpSync(coreDirectory + '/codyconfig.js', projectDIR + '/codyconfig.js');
 
         console.log('Created a fresh codyconfig.js in project root. Configure your hooks in that file to be invoked by Cody.')
         console.log('Learn more about Cody: https://wiki.prooph-board.com/cody/Cody-Server.html')

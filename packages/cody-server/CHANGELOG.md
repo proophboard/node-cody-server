@@ -1,5 +1,11 @@
 # @proophboard/cody-server
 
+## 0.1.1
+
+### Patch Changes
+
+- Fixed copy command
+
 ## 0.1.0
 
 ### Minor Changes
