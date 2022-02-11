@@ -1,3 +1,5 @@
+import {Map} from "immutable";
+
 module.exports = {
     context: {
         /*
@@ -5,7 +7,7 @@ module.exports = {
          * use it to pass configuration to your hooks like a src directory, credentials, ...
          */
         // This Cody server implements the optional Sync flow and stores all synced nodes in this context property
-        syncedNodes: {}
+        syncedNodes: Map({})
     },
     hooks: {
         /**

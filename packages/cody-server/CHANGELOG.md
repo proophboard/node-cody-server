@@ -1,5 +1,11 @@
 # @proophboard/cody-server
 
+## 0.3.1
+
+### Patch Changes
+
+- Fixed default codyconfig.ts to use immutable Map for syncedNodes
+
 ## 0.3.0
 
 ### Minor Changes
