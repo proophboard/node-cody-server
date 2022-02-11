@@ -1,5 +1,11 @@
 # @proophboard/cody-server
 
+## 0.3.0
+
+### Minor Changes
+
+- Moved @types dependencies from dev to main and bumped ts-node version
+
 ## 0.2.0
 
 ### Minor Changes
