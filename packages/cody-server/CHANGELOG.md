@@ -1,5 +1,11 @@
 # @proophboard/cody-server
 
+## 0.1.0
+
+### Minor Changes
+
+- First complete version of Cody
+
 ## 0.0.5
 
 ### Patch Changes

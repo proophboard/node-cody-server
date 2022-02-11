@@ -1,6 +1,6 @@
 {
   "name": "@proophboard/cody-server",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "Cody Server",
   "bin": {
     "proophboard": "bin/cody.js"
@@ -27,7 +27,8 @@
   "devDependencies": {
     "@types/compression": "^1.7.2",
     "@types/cors": "^2.8.12",
-    "@types/express": "^4.17.13"
+    "@types/express": "^4.17.13",
+    "nodemon": "^2.0.15"
   },
   "keywords": [
     "Cody"
