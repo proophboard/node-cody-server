@@ -1,5 +1,11 @@
 # @proophboard/cody-utils
 
+## 0.2.0
+
+### Minor Changes
+
+- Updated response type of metadata utils
+
 ## 0.1.2
 
 ### Patch Changes
