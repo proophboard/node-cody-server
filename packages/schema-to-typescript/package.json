@@ -1,0 +1,37 @@
+{
+  "name": "@proophboard/schema-to-typescript",
+  "version": "0.2.0",
+  "description": "prooph board schema to TypeScript types",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/proophboard/node-cody-server.git",
+    "directory": "packages/schema-to-typescript"
+  },
+  "dependencies": {
+    "@proophboard/cody-types": "^0.3.2",
+    "immutable": "^4.0.0",
+    "json-schema-to-typescript": "^10.1.5"
+  },
+  "keywords": [
+    "Cody",
+    "lowcode",
+    "proophboard"
+  ],
+  "author": "alex-miertsch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/proophboard/node-cody-server/issues"
+  },
+  "homepage": "https://github.com/proophboard/node-cody-server#readme",
+  "engines": {
+    "node": ">=14"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
