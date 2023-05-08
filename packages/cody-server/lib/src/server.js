@@ -73,8 +73,8 @@ const codyServer = (codyConfig) => {
         console.log(Events.ElementEdited, req.body);
         const reqContext = req.body.context;
         codyConfig.context = {
+            ...codyConfig.context,
             ...reqContext,
-            ...codyConfig.context
         };
         if (syncStatus.syncRequired) {
             codyConfig.context.syncedNodes = immutable_1.Map();
