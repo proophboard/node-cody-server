@@ -1,5 +1,11 @@
 # @proophboard/cody-server
 
+## 0.4.0
+
+### Minor Changes
+
+- 7e4cbb7: Populate context with info about board and user
+
 ## 0.3.4
 
 ### Patch Changes
