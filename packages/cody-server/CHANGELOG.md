@@ -1,5 +1,11 @@
 # @proophboard/cody-server
 
+## 0.4.2
+
+### Patch Changes
+
+- req context overrides config context
+
 ## 0.4.1
 
 ### Patch Changes

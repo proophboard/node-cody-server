@@ -85,8 +85,8 @@ const codyServer = (codyConfig: CodyConfig): Server => {
 
         const reqContext = req.body.context;
         codyConfig.context = {
+            ...codyConfig.context,
             ...reqContext,
-            ...codyConfig.context
         };
 
         if(syncStatus.syncRequired) {
