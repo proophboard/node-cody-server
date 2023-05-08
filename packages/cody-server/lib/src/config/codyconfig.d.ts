@@ -12,6 +12,9 @@ export interface CodyConfig {
         [key: string]: unknown;
     } & {
         syncedNodes: Map<string, Node>;
+        boardId: string;
+        boardName: string;
+        userId: string;
     };
     hooks: Hooks;
 }

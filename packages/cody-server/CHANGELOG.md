@@ -1,5 +1,11 @@
 # @proophboard/cody-server
 
+## 0.4.1
+
+### Patch Changes
+
+- Provide build for new server version
+
 ## 0.4.0
 
 ### Minor Changes
