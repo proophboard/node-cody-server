@@ -83,6 +83,12 @@ const codyServer = (codyConfig: CodyConfig): Server => {
     app.post(`/messages/${Events.ElementEdited}`, (req: Request<any, CodyResponse, ElementEdited>, res: Response<CodyResponse>) => {
         console.log(Events.ElementEdited, req.body);
 
+        const reqContext = req.body.context;
+        codyConfig.context = {
+            ...reqContext,
+            ...codyConfig.context
+        };
+
         if(syncStatus.syncRequired) {
             codyConfig.context.syncedNodes = Map<string, Node>();
 

@@ -3,6 +3,7 @@ import {CodyConfig} from "../config/codyconfig";
 
 export interface ElementEdited {
     node: RawNodeRecordProps;
+    context: {boardId: string, boardName: string, userId: string};
 }
 
 export const handleElementEdited = async (node: Node, codyConfig: CodyConfig): Promise<CodyResponse> => {

@@ -9,6 +9,6 @@ export interface Sync {
 interface Hooks {[hookName: string]: CodyHook}
 
 export interface CodyConfig {
-    context: {[key: string]: unknown} & {syncedNodes: Map<string, Node>};
+    context: {[key: string]: unknown} & {syncedNodes: Map<string, Node>, boardId: string, boardName: string, userId: string};
     hooks: Hooks;
 }
