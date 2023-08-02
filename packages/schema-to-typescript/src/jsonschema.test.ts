@@ -282,6 +282,33 @@ test("It converts shorthand object to JSONSchema object respecting given namespa
     })
 })
 
+test("It converts shorthand object to JSONSchema with data reference validation", () => {
+    const schema = convertShorthandObjectToJsonSchema({
+        "startTime": "string|format:date-time",
+        "endTime": "string|format:date-time|$formatMinimum:startTime"
+    });
+
+    expect(schema).toEqual({
+        type: "object",
+        properties: {
+            startTime: {
+                type: "string",
+                format: "date-time"
+            },
+            endTime: {
+                type: "string",
+                format: "date-time",
+                formatMinimum: {$data: "1/startTime"}
+            }
+        },
+        required: [
+            "startTime",
+            "endTime",
+        ],
+        additionalProperties: false,
+    })
+})
+
 test("It converts shorthand object to JSONSchema object respecting given namespace alternative version", () => {
     const schema = convertShorthandObjectToJsonSchema({
         name: "string|minLength:1",

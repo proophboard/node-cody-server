@@ -535,7 +535,7 @@ export const convertShorthandStringToJsonSchema = (shorthand: string, namespace:
                 parts.splice(1,1);
             }
 
-            const schema: {[schemaProp: string]: string | boolean | number | string[]} = {
+            const schema: {[schemaProp: string]: string | boolean | number | string[] | {$data: string}} = {
                 type,
             };
 
@@ -594,7 +594,7 @@ export const convertShorthandStringToJsonSchema = (shorthand: string, namespace:
     }
 }
 
-export const parseShorthandValidation = (validation: string): [string, string | number | boolean] | CodyResponse => {
+export const parseShorthandValidation = (validation: string): [string, string | number | boolean | {$data: string}] | CodyResponse => {
     const parts = validation.split(':');
 
     if(parts.length !== 2) {
@@ -624,6 +624,10 @@ export const parseShorthandValidation = (validation: string): [string, string | 
 
     if(validationKey === "ns") {
         return [NAMESPACE, value];
+    }
+
+    if(validationKey[0] === "$") {
+        return [validationKey.slice(1), {$data: '1/' + value.split(".").join("/")}]
     }
 
     return [validationKey, value];
