@@ -7,6 +7,10 @@ NodeJS Cody Server
 
 [Changesets](https://github.com/changesets/changesets) is used to manage package versions and publishing to NPM
 
+### Build Package
+
+`yarn build`
+
 ### Create Changeset
 
 `changeset`

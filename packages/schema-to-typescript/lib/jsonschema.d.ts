@@ -24,7 +24,12 @@ export interface ShorthandObject {
 }
 export declare const convertShorthandObjectToJsonSchema: (shorthand: ShorthandObject, namespace?: string | undefined) => JSONSchema | CodyResponse;
 export declare const convertShorthandStringToJsonSchema: (shorthand: string, namespace: string) => JSONSchema | CodyResponse;
-export declare const parseShorthandValidation: (validation: string) => [string, string | number | boolean] | CodyResponse;
+export declare const parseShorthandValidation: (validation: string) => [
+    string,
+    string | number | boolean | {
+        $data: string;
+    }
+] | CodyResponse;
 export declare const dereferenceSchema: (schema: JSONSchema, defs: SchemaDefinitions) => Promise<JSONSchema>;
 export declare const relativeImportPath: (sourcePath: string, refSource: string) => string;
 export declare const isArrayType: (def: string, defs: SchemaDefinitions) => boolean;

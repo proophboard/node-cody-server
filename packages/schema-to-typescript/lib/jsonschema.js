@@ -522,6 +522,9 @@ const parseShorthandValidation = (validation) => {
     if (validationKey === "ns") {
         return [exports.NAMESPACE, value];
     }
+    if (validationKey[0] === "$") {
+        return [validationKey.slice(1), { $data: '1/' + value.split(".").join("/") }];
+    }
     return [validationKey, value];
 };
 exports.parseShorthandValidation = parseShorthandValidation;
