@@ -1,5 +1,12 @@
 # @proophboard/schema-to-typescript
 
+## 0.3.2
+
+### Patch Changes
+
+- Updated dependencies [4f7de29]
+  - @proophboard/cody-types@0.4.0
+
 ## 0.3.1
 
 ### Patch Changes

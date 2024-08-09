@@ -1,6 +1,6 @@
 {
   "name": "@proophboard/cody-utils",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Cody Utilities",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -13,7 +13,7 @@
     "directory": "packages/cody-utils"
   },
   "dependencies": {
-    "@proophboard/cody-types": "^0.3.2",
+    "@proophboard/cody-types": "^0.4.0",
     "camel-case": "^4.1.2",
     "immutable": "^4.0.0"
   },

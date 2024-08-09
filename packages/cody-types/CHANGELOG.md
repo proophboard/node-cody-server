@@ -1,5 +1,11 @@
 # @proophboard/cody-types
 
+## 0.4.0
+
+### Minor Changes
+
+- 4f7de29: Allow node name and type to be overridden via metadata
+
 ## 0.3.2
 
 ### Patch Changes
