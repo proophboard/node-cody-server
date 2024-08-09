@@ -9,7 +9,7 @@ import {
   NodeRecordProps,
   NodeTag,
   NodeType,
-  RawNodeRecordProps
+  RawNodeRecordProps,
 } from './index';
 
 const defaultNodeRecordProps: NodeRecordProps = {
@@ -29,12 +29,14 @@ const defaultNodeRecordProps: NodeRecordProps = {
   metadata: null,
 };
 
-export const makeNodeRecord = (node: RawNodeRecordProps): NodeRecord =>
-  new NodeRecord({
+export const makeNodeRecord = (node: RawNodeRecordProps): NodeRecord => {
+  const metadata = parseRawMetadataToJsonIfPossible<{$nodeName?: string, $nodeType?: NodeType}>(node) || {};
+
+  return new NodeRecord({
     id: node.id,
-    name: node.name,
+    name: metadata.$nodeName || node.name,
     description: node.description,
-    type: node.type,
+    type: metadata.$nodeType || node.type,
     link: node.link || '',
     tags: List(node.tags),
     layer: node.layer,
@@ -46,6 +48,7 @@ export const makeNodeRecord = (node: RawNodeRecordProps): NodeRecord =>
     geometry: new GraphPointRecord(node.geometry),
     metadata: node.metadata,
   });
+}
 
 export class NodeRecord extends Record(defaultNodeRecordProps) implements Node {
   public getId(): NodeId {
@@ -114,5 +117,18 @@ export class NodeRecord extends Record(defaultNodeRecordProps) implements Node {
 
   public withTargets(targetsList: List<Node>): Node {
     return this.set('targetsList', targetsList);
+  }
+}
+
+const parseRawMetadataToJsonIfPossible = <T>(node: RawNodeRecordProps): T | undefined => {
+  if(!node.metadata) {
+    return;
+  }
+
+  try {
+    return JSON.parse(node.metadata);
+  } catch (e) {
+    throw e;
+    return;
   }
 }

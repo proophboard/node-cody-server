@@ -19,22 +19,25 @@ const defaultNodeRecordProps = {
     geometry: { x: 0, y: 0 },
     metadata: null,
 };
-const makeNodeRecord = (node) => new NodeRecord({
-    id: node.id,
-    name: node.name,
-    description: node.description,
-    type: node.type,
-    link: node.link || '',
-    tags: (0, immutable_1.List)(node.tags),
-    layer: node.layer,
-    defaultLayer: node.defaultLayer,
-    parent: node.parent ? (0, exports.makeNodeRecord)(node.parent) : null,
-    childrenList: (0, immutable_1.List)(node.childrenList.map(exports.makeNodeRecord)),
-    sourcesList: (0, immutable_1.List)(node.sourcesList.map(exports.makeNodeRecord)),
-    targetsList: (0, immutable_1.List)(node.targetsList.map(exports.makeNodeRecord)),
-    geometry: new index_1.GraphPointRecord(node.geometry),
-    metadata: node.metadata,
-});
+const makeNodeRecord = (node) => {
+    const metadata = parseRawMetadataToJsonIfPossible(node) || {};
+    return new NodeRecord({
+        id: node.id,
+        name: metadata.$nodeName || node.name,
+        description: node.description,
+        type: metadata.$nodeType || node.type,
+        link: node.link || '',
+        tags: (0, immutable_1.List)(node.tags),
+        layer: node.layer,
+        defaultLayer: node.defaultLayer,
+        parent: node.parent ? (0, exports.makeNodeRecord)(node.parent) : null,
+        childrenList: (0, immutable_1.List)(node.childrenList.map(exports.makeNodeRecord)),
+        sourcesList: (0, immutable_1.List)(node.sourcesList.map(exports.makeNodeRecord)),
+        targetsList: (0, immutable_1.List)(node.targetsList.map(exports.makeNodeRecord)),
+        geometry: new index_1.GraphPointRecord(node.geometry),
+        metadata: node.metadata,
+    });
+};
 exports.makeNodeRecord = makeNodeRecord;
 class NodeRecord extends (0, immutable_1.Record)(defaultNodeRecordProps) {
     getId() {
@@ -90,3 +93,15 @@ class NodeRecord extends (0, immutable_1.Record)(defaultNodeRecordProps) {
     }
 }
 exports.NodeRecord = NodeRecord;
+const parseRawMetadataToJsonIfPossible = (node) => {
+    if (!node.metadata) {
+        return;
+    }
+    try {
+        return JSON.parse(node.metadata);
+    }
+    catch (e) {
+        throw e;
+        return;
+    }
+};
