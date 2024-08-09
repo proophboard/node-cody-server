@@ -101,7 +101,6 @@ const parseRawMetadataToJsonIfPossible = (node) => {
         return JSON.parse(node.metadata);
     }
     catch (e) {
-        throw e;
         return;
     }
 };

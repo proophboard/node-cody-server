@@ -128,7 +128,6 @@ const parseRawMetadataToJsonIfPossible = <T>(node: RawNodeRecordProps): T | unde
   try {
     return JSON.parse(node.metadata);
   } catch (e) {
-    throw e;
     return;
   }
 }

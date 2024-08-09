@@ -1,5 +1,11 @@
 # @proophboard/cody-types
 
+## 0.4.1
+
+### Patch Changes
+
+- Don't throw on JSON.parse
+
 ## 0.4.0
 
 ### Minor Changes
