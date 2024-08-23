@@ -11,7 +11,7 @@ if (!codyConfig) {
     console.error("No codyconfig.ts found in the current working directory: " + process.cwd());
     process.exit(1);
 }
-const server = server_1.default(codyConfig);
+const server = (0, server_1.default)(codyConfig);
 server.listen(config_1.default.PORT, () => {
     console.log('Server listening at port %d', config_1.default.PORT);
     console.log({ config: config_1.default });

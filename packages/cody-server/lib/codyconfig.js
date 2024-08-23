@@ -8,7 +8,7 @@ module.exports = {
          * use it to pass configuration to your hooks like a src directory, credentials, ...
          */
         // This Cody server implements the optional Sync flow and stores all synced nodes in this context property
-        syncedNodes: immutable_1.Map({}),
+        syncedNodes: (0, immutable_1.Map)({}),
         // Following properties are populated on every trigger
         boardId: '',
         boardName: '',

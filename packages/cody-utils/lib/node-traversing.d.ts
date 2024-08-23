@@ -1,7 +1,7 @@
 import { List } from "immutable";
 import { CodyResponse, GraphPoint, Node, NodeMap, NodeType } from "@proophboard/cody-types";
-declare type Success = Node;
-declare type Error = CodyResponse;
+type Success = Node;
+type Error = CodyResponse;
 export declare const getSingleTarget: (node: Node, expectedType: NodeType) => Success | Error;
 export declare const getSingleSource: (node: Node, expectedType: NodeType) => Success | Error;
 export declare const getSingleSourceFromSyncedNodes: (node: Node, expectedType: NodeType, syncedNodes: NodeMap) => Success | Error;
@@ -9,6 +9,6 @@ export declare const getSourcesOfType: (node: Node, expectedType: NodeType, igno
 export declare const getTargetsOfType: (node: Node, expectedType: NodeType, ignoreOthers?: boolean, includeChildren?: boolean, allowEmpty?: boolean) => List<Success> | Error;
 export declare const getSourcesOfTypeWithParentLookup: (node: Node, expectedType: NodeType) => List<Success>;
 export declare const getTargetsOfTypeWithParentLookup: (node: Node, expectedType: NodeType) => List<Success>;
-export declare const getAbsoluteGraphPoint: (node: Node, calculatedChildGraphPoint?: GraphPoint | undefined) => GraphPoint;
+export declare const getAbsoluteGraphPoint: (node: Node, calculatedChildGraphPoint?: GraphPoint) => GraphPoint;
 export declare const mergeWithSimilarNodes: (node: Node, otherNodes: NodeMap) => Node;
 export {};

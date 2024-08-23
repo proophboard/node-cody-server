@@ -1,5 +1,16 @@
 # @proophboard/cody-server
 
+## 0.5.0
+
+### Minor Changes
+
+- Updated dependencies and shorthand schema can now contain nested objs in array
+
+### Patch Changes
+
+- Updated dependencies
+  - @proophboard/cody-types@0.5.0
+
 ## 0.4.4
 
 ### Patch Changes

@@ -1,5 +1,5 @@
 import { List, Map, Record } from 'immutable';
-export declare type ReplyCallback<T = any> = (reply: T) => Promise<CodyResponse>;
+export type ReplyCallback<T = any> = (reply: T) => Promise<CodyResponse>;
 export interface CodyResponse {
     cody: string | string[];
     details?: string | string[];
@@ -14,12 +14,12 @@ export declare enum CodyResponseType {
     SyncRequired = "SyncRequired",
     Empty = "Empty"
 }
-export declare type NodeMap = Map<string, Node>;
-export declare type NodeId = string;
-export declare type NodeName = string;
-export declare type NodeDescription = string;
-export declare type NodeLink = string;
-export declare type NodeTag = string;
+export type NodeMap = Map<string, Node>;
+export type NodeId = string;
+export type NodeName = string;
+export type NodeDescription = string;
+export type NodeLink = string;
+export type NodeTag = string;
 export declare enum NodeType {
     event = "event",
     command = "command",
@@ -40,7 +40,7 @@ export declare enum NodeType {
     image = "image",
     layer = "layer"
 }
-export declare type CodyHook<T = any> = (node: Node, context: T) => Promise<CodyResponse>;
+export type CodyHook<T = any> = (node: Node, context: T) => Promise<CodyResponse>;
 export interface GraphPoint {
     x: number;
     y: number;
