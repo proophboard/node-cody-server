@@ -355,13 +355,6 @@ const convertShorthandObjectToJsonSchema = (shorthand, namespace) => {
             };
         }
         else if (property === '$items') {
-            if (typeof shorthand[schemaProperty] !== 'string') {
-                return {
-                    cody: `Detected a top level shorthand array using an "$items" prop, but the value of the property is not a string.`,
-                    details: "It is of type " + typeof shorthand[schemaProperty],
-                    type: cody_types_1.CodyResponseType.Error
-                };
-            }
             if (Object.keys(shorthand).length > 1) {
                 // Allow title as the only alternative property
                 if (!Object.keys(shorthand).includes('$title')) {

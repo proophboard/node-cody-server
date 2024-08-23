@@ -1,5 +1,11 @@
 # @proophboard/schema-to-typescript
 
+## 0.4.1
+
+### Patch Changes
+
+- Remove item schema string check
+
 ## 0.4.0
 
 ### Minor Changes
