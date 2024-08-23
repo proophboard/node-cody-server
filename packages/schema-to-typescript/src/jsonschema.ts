@@ -434,13 +434,15 @@ export const convertShorthandObjectToJsonSchema = (shorthand: ShorthandObject, n
                 }
             }
 
-            let itemsShorthandSchema = shorthand[schemaProperty] as string;
+            let itemsShorthandSchema = shorthand[schemaProperty];
 
-            if(itemsShorthandSchema.slice(-2) !== '[]') {
+            if(typeof itemsShorthandSchema === "string" && itemsShorthandSchema.slice(-2) !== '[]') {
                 itemsShorthandSchema = itemsShorthandSchema + '[]';
             }
 
-            const arraySchema = convertShorthandStringToJsonSchema(itemsShorthandSchema, namespace);
+            const arraySchema = typeof itemsShorthandSchema === "string"
+              ? convertShorthandStringToJsonSchema(itemsShorthandSchema, namespace)
+              : {type: "array", items: convertShorthandObjectToJsonSchema(itemsShorthandSchema)} as JSONSchema;
 
             if(!isCodyError(arraySchema) && Object.keys(shorthand).includes('$title')) {
                 arraySchema.title = shorthand['$title'] as string;
