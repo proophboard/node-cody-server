@@ -10,8 +10,6 @@ import {greeting, IioSaidHello} from "./http/greeting";
 import {checkQuestion, handleReply, Reply, test} from "./http/question";
 import {CodyConfig, Sync} from "./config/codyconfig";
 import {ElementEdited, handleElementEdited} from "./http/elementEdited";
-// tslint:disable-next-line:no-var-requires
-const bodyParser = require('body-parser');
 
 const syncStatus = {syncRequired: true};
 
@@ -37,7 +35,7 @@ const codyServer = (codyConfig: CodyConfig): Server => {
     // GZIP compress resources served
     app.use(compression());
     app.use(cors(options));
-    app.use(bodyParser.json());
+    app.use(express.json({limit: "100mb"}));
 
     // Force redirect to HTTPS if the protocol was HTTP
     // if (!process.env.LOCAL) {

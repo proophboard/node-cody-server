@@ -1,5 +1,11 @@
 # @proophboard/cody-server
 
+## 0.5.1
+
+### Patch Changes
+
+- Increase request size limit
+
 ## 0.5.0
 
 ### Minor Changes

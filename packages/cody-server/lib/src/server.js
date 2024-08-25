@@ -12,8 +12,6 @@ const cody_types_1 = require("@proophboard/cody-types");
 const greeting_1 = require("./http/greeting");
 const question_1 = require("./http/question");
 const elementEdited_1 = require("./http/elementEdited");
-// tslint:disable-next-line:no-var-requires
-const bodyParser = require('body-parser');
 const syncStatus = { syncRequired: true };
 const codyServer = (codyConfig) => {
     const app = (0, express_1.default)();
@@ -34,7 +32,7 @@ const codyServer = (codyConfig) => {
     // GZIP compress resources served
     app.use((0, compression_1.default)());
     app.use((0, cors_1.default)(options));
-    app.use(bodyParser.json());
+    app.use(express_1.default.json({ limit: "100mb" }));
     // Force redirect to HTTPS if the protocol was HTTP
     // if (!process.env.LOCAL) {
     //     app.use( enforce.HTTPS( { trustProtoHeader: true } ) );
