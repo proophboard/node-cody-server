@@ -1,5 +1,11 @@
 # @proophboard/schema-to-typescript
 
+## 0.5.0
+
+### Minor Changes
+
+- d7d5e7c: Improve support for defaults
+
 ## 0.4.1
 
 ### Patch Changes
