@@ -22,7 +22,11 @@ export declare const isRootNamespace: (ref: string) => boolean;
 export interface ShorthandObject {
     [property: string]: ShorthandObject | string;
 }
-export declare const convertShorthandObjectToJsonSchema: (shorthand: ShorthandObject, namespace?: string) => JSONSchema | CodyResponse;
+export interface ShorthandObjectWithDefault {
+    $default?: any;
+    [property: string]: ShorthandObject | string;
+}
+export declare const convertShorthandObjectToJsonSchema: (shorthand: ShorthandObjectWithDefault, namespace?: string) => JSONSchema | CodyResponse;
 export declare const convertShorthandStringToJsonSchema: (shorthand: string, namespace: string) => JSONSchema | CodyResponse;
 export declare const parseShorthandValidation: (validation: string) => [
     string,

@@ -2,7 +2,7 @@ import {
     convertShorthandObjectToJsonSchema,
     convertShorthandStringToJsonSchema,
     dereferenceSchema,
-    SchemaDefinitions
+    SchemaDefinitions, ShorthandObject
 } from "./jsonschema";
 import {JSONSchema} from "json-schema-to-typescript";
 
@@ -335,6 +335,60 @@ test("It converts shorthand object to JSONSchema object respecting given namespa
             "address",
         ],
         additionalProperties: false,
+    })
+})
+
+test("it converts shorthand with defaults", () => {
+    const schema = convertShorthandObjectToJsonSchema({
+        name: "string|default:Max",
+        age: "integer|default:40",
+        height: "number|default:1.9",
+        hobbies: {
+            "$items": "string",
+            "$default": []
+        } as unknown as ShorthandObject,
+        address: {
+            "$default": {},
+            street: "string",
+        }
+    })
+
+    expect(schema).toEqual({
+        type: "object",
+        properties: {
+            name: {
+                type: "string",
+                default: "Max",
+            },
+            age: {
+                type: "integer",
+                default: 40
+            },
+            height: {
+                type: "number",
+                default: 1.9
+            },
+            hobbies: {
+              default: [],
+              type: "array",
+              items: {
+                  type: "string"
+              }
+            },
+            address: {
+                type: "object",
+                properties: {
+                    street: {
+                        type: "string"
+                    }
+                },
+                default: {},
+                required: ["street"],
+                additionalProperties: false
+            }
+        },
+        required: ["name", "age", "height", "hobbies", "address"],
+        additionalProperties: false
     })
 })
 

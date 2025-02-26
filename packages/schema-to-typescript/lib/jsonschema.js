@@ -355,15 +355,12 @@ const convertShorthandObjectToJsonSchema = (shorthand, namespace) => {
             };
         }
         else if (property === '$items') {
-            if (Object.keys(shorthand).length > 1) {
-                // Allow title as the only alternative property
-                if (!Object.keys(shorthand).includes('$title')) {
-                    return {
-                        cody: `Shorthand ${JSON.stringify(shorthand)} contains a top level array property "$items", but it is not the only property!`,
-                        details: 'A top level array cannot have other properties then "$items".',
-                        type: cody_types_1.CodyResponseType.Error
-                    };
-                }
+            if (Object.keys(shorthand).filter(k => k[0] !== '$').length > 0) {
+                return {
+                    cody: `Shorthand ${JSON.stringify(shorthand)} contains a top level array property "$items", but it is not the only property!`,
+                    details: 'A top level array cannot have other properties then "$items".',
+                    type: cody_types_1.CodyResponseType.Error
+                };
             }
             let itemsShorthandSchema = shorthand[schemaProperty];
             if (typeof itemsShorthandSchema === "string" && itemsShorthandSchema.slice(-2) !== '[]') {
@@ -375,10 +372,26 @@ const convertShorthandObjectToJsonSchema = (shorthand, namespace) => {
             if (!(0, lib_1.isCodyError)(arraySchema) && Object.keys(shorthand).includes('$title')) {
                 arraySchema.title = shorthand['$title'];
             }
+            if (!(0, lib_1.isCodyError)(arraySchema) && Object.keys(shorthand).includes('$description')) {
+                arraySchema.description = shorthand['$description'];
+            }
+            if (!(0, lib_1.isCodyError)(arraySchema) && Object.keys(shorthand).includes('$default')) {
+                arraySchema.default = shorthand['$default'];
+            }
             return arraySchema;
         }
         else if (schemaProperty === '$title') {
             schema.title = shorthand[property];
+            delete shorthand[property];
+            continue;
+        }
+        else if (schemaProperty === "$default") {
+            schema.default = shorthand[property];
+            delete shorthand[property];
+            continue;
+        }
+        else if (schemaProperty === "$description") {
+            schema.description = shorthand[property];
             delete shorthand[property];
             continue;
         }
@@ -498,12 +511,18 @@ const convertShorthandStringToJsonSchema = (shorthand, namespace) => {
 };
 exports.convertShorthandStringToJsonSchema = convertShorthandStringToJsonSchema;
 const parseShorthandValidation = (validation) => {
-    const parts = validation.split(':');
-    if (parts.length !== 2) {
+    let parts = validation.split(':');
+    if (parts.length < 2) {
         return {
             cody: `Can't parse shorthand validation: "${validation}". Expected format "validationKey:value". Please check again!`,
             type: cody_types_1.CodyResponseType.Error
         };
+    }
+    else if (parts.length > 2) {
+        const tmpValidationKey = parts[0];
+        parts.splice(0, 1);
+        const tmpValidationValue = parts.join(':');
+        parts = [tmpValidationKey, tmpValidationValue];
     }
     const [validationKey, value] = parts;
     if (value === 'true') {
@@ -523,6 +542,17 @@ const parseShorthandValidation = (validation) => {
     }
     if (validationKey[0] === "$") {
         return [validationKey.slice(1), { $data: '1/' + value.split(".").join("/") }];
+    }
+    if (validationKey === "default" && (value[0] === '[' || value[0] === '{')) {
+        try {
+            const valueObj = JSON.parse(value);
+            if (typeof valueObj === "object") {
+                return [validationKey, valueObj];
+            }
+        }
+        catch (e) {
+            // ignore parsing error
+        }
     }
     return [validationKey, value];
 };

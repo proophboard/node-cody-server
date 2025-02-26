@@ -356,7 +356,9 @@ export const isRootNamespace = (ref: string): boolean => {
 
 export interface ShorthandObject {[property: string]: ShorthandObject | string}
 
-export const convertShorthandObjectToJsonSchema = (shorthand: ShorthandObject, namespace?: string): JSONSchema | CodyResponse => {
+export interface ShorthandObjectWithDefault {$default?: any, [property: string]: ShorthandObject | string}
+
+export const convertShorthandObjectToJsonSchema = (shorthand: ShorthandObjectWithDefault, namespace?: string): JSONSchema | CodyResponse => {
     const schema: JSONSchema = {
         type: "object",
         properties: {},
@@ -415,14 +417,11 @@ export const convertShorthandObjectToJsonSchema = (shorthand: ShorthandObject, n
                 "$ref": `#/definitions${namespace}${reference}`
             };
         } else if (property === '$items') {
-            if(Object.keys(shorthand).length > 1) {
-                // Allow title as the only alternative property
-                if(!Object.keys(shorthand).includes('$title')) {
-                    return {
-                        cody: `Shorthand ${JSON.stringify(shorthand)} contains a top level array property "$items", but it is not the only property!`,
-                        details: 'A top level array cannot have other properties then "$items".',
-                        type: CodyResponseType.Error
-                    }
+            if(Object.keys(shorthand).filter(k => k[0] !== '$').length > 0) {
+                return {
+                    cody: `Shorthand ${JSON.stringify(shorthand)} contains a top level array property "$items", but it is not the only property!`,
+                    details: 'A top level array cannot have other properties then "$items".',
+                    type: CodyResponseType.Error
                 }
             }
 
@@ -440,9 +439,25 @@ export const convertShorthandObjectToJsonSchema = (shorthand: ShorthandObject, n
                 arraySchema.title = shorthand['$title'] as string;
             }
 
+            if(!isCodyError(arraySchema) && Object.keys(shorthand).includes('$description')) {
+                arraySchema.description = shorthand['$description'] as string;
+            }
+
+            if(!isCodyError(arraySchema) && Object.keys(shorthand).includes('$default')) {
+                arraySchema.default = shorthand['$default'];
+            }
+
             return arraySchema;
         } else if (schemaProperty === '$title') {
             schema.title = shorthand[property] as string;
+            delete shorthand[property];
+            continue;
+        } else if (schemaProperty === "$default") {
+            schema.default = shorthand[property];
+            delete shorthand[property];
+            continue;
+        } else if (schemaProperty === "$description") {
+            schema.description = shorthand[property] as string;
             delete shorthand[property];
             continue;
         } else {
@@ -589,13 +604,18 @@ export const convertShorthandStringToJsonSchema = (shorthand: string, namespace:
 }
 
 export const parseShorthandValidation = (validation: string): [string, string | number | boolean | {$data: string}] | CodyResponse => {
-    const parts = validation.split(':');
+    let parts = validation.split(':');
 
-    if(parts.length !== 2) {
+    if(parts.length < 2) {
         return {
             cody: `Can't parse shorthand validation: "${validation}". Expected format "validationKey:value". Please check again!`,
             type: CodyResponseType.Error
         }
+    } else if (parts.length > 2) {
+        const tmpValidationKey = parts[0];
+        parts.splice(0, 1);
+        const tmpValidationValue = parts.join(':');
+        parts = [tmpValidationKey, tmpValidationValue];
     }
 
     const [validationKey, value] = parts;
@@ -622,6 +642,18 @@ export const parseShorthandValidation = (validation: string): [string, string | 
 
     if(validationKey[0] === "$") {
         return [validationKey.slice(1), {$data: '1/' + value.split(".").join("/")}]
+    }
+
+    if(validationKey === "default" && (value[0] === '[' || value[0] === '{')) {
+        try {
+            const valueObj = JSON.parse(value);
+
+            if(typeof valueObj === "object") {
+                return [validationKey, valueObj];
+            }
+        } catch (e) {
+            // ignore parsing error
+        }
     }
 
     return [validationKey, value];
