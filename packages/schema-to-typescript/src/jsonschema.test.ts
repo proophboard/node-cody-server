@@ -392,6 +392,29 @@ test("it converts shorthand with defaults", () => {
     })
 })
 
+test("It converts shorthand array of uuid property to JSON Schema", () => {
+    const schema = convertShorthandObjectToJsonSchema({
+        list: {
+            $items: "string|format:uuid"
+        }
+    });
+
+    expect(schema).toEqual({
+        type: "object",
+        properties: {
+            list: {
+                type: "array",
+                items: {
+                    type: "string",
+                    format: "uuid"
+                }
+            }
+        },
+        required: ["list"],
+        additionalProperties: false
+    });
+})
+
 test("It dereferences JSONSchema", (done) => {
     const defs: SchemaDefinitions  = {
         sourceMap: {
