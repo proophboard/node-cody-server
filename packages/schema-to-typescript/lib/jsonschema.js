@@ -363,11 +363,13 @@ const convertShorthandObjectToJsonSchema = (shorthand, namespace) => {
                 };
             }
             let itemsShorthandSchema = shorthand[schemaProperty];
-            if (typeof itemsShorthandSchema === "string" && itemsShorthandSchema.slice(-2) !== '[]') {
+            if (typeof itemsShorthandSchema === "string" && itemsShorthandSchema.slice(-2) !== '[]' && !itemsShorthandSchema.includes("|")) {
                 itemsShorthandSchema = itemsShorthandSchema + '[]';
             }
             const arraySchema = typeof itemsShorthandSchema === "string"
-                ? (0, exports.convertShorthandStringToJsonSchema)(itemsShorthandSchema, namespace)
+                ? itemsShorthandSchema.slice(-2) === '[]'
+                    ? (0, exports.convertShorthandStringToJsonSchema)(itemsShorthandSchema, namespace)
+                    : { type: "array", items: (0, exports.convertShorthandStringToJsonSchema)(itemsShorthandSchema, namespace) }
                 : { type: "array", items: (0, exports.convertShorthandObjectToJsonSchema)(itemsShorthandSchema) };
             if (!(0, lib_1.isCodyError)(arraySchema) && Object.keys(shorthand).includes('$title')) {
                 arraySchema.title = shorthand['$title'];

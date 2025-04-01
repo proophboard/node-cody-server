@@ -1,5 +1,11 @@
 # @proophboard/schema-to-typescript
 
+## 0.5.1
+
+### Patch Changes
+
+- Fix: wrong conversion of primitve \$items type
+
 ## 0.5.0
 
 ### Minor Changes

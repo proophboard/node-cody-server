@@ -1,6 +1,6 @@
 {
   "name": "@proophboard/schema-to-typescript",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "prooph board schema to TypeScript types",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
