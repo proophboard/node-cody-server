@@ -1,5 +1,11 @@
 # @proophboard/cody-server
 
+## 0.6.0
+
+### Minor Changes
+
+- 4b88497: Cody server now uses syncedNodes.clear() to reset map
+
 ## 0.5.1
 
 ### Patch Changes
