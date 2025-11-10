@@ -88,7 +88,7 @@ const codyServer = (codyConfig: CodyConfig): Server => {
         };
 
         if(syncStatus.syncRequired) {
-            codyConfig.context.syncedNodes = Map<string, Node>();
+            codyConfig.context.syncedNodes = codyConfig.context.syncedNodes.clear();
 
             res.send({
                 cody: 'I need to sync all elements first.',

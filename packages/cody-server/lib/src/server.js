@@ -7,7 +7,6 @@ const compression_1 = __importDefault(require("compression"));
 const cors_1 = __importDefault(require("cors"));
 const express_1 = __importDefault(require("express"));
 const http_1 = __importDefault(require("http"));
-const immutable_1 = require("immutable");
 const cody_types_1 = require("@proophboard/cody-types");
 const greeting_1 = require("./http/greeting");
 const question_1 = require("./http/question");
@@ -75,7 +74,7 @@ const codyServer = (codyConfig) => {
             ...reqContext,
         };
         if (syncStatus.syncRequired) {
-            codyConfig.context.syncedNodes = (0, immutable_1.Map)();
+            codyConfig.context.syncedNodes = codyConfig.context.syncedNodes.clear();
             res.send({
                 cody: 'I need to sync all elements first.',
                 details: "Lean back for a moment. I'll let you know when I'm done.",
